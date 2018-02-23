@@ -74,14 +74,7 @@ View(head(volData, n=10) )
 Beniamini-Hochberg Procedure - NOPE
 FDR
 ```{r}
-bh = c()
-
-for(i in 1:nrow(volData))
-{
-  #akt = volData[i, 'ps'] * 0.05 / nrow((volData))
-  akt = p.adjust(volData$ps, method = 'fdr')
-  bh <- c(bh , akt)
-}
+bh = p.adjust(volData$ps, method = 'fdr')
 
 #View(head(bh, n=10))
 
@@ -105,7 +98,7 @@ drawRes = mutate(volData, sig=ifelse(volData$bh < 0.05, 'FDR<0.05', 'Not Sig'))
 
 volPlo = ggplot(drawRes, aes(meds, -log10(ps))) + geom_point(aes(col=sig)) + scale_color_manual(values = c('red', 'black'))
 
-volPlo <- volPlo + geom_text(data=filter(drawRes, bh<0.05), aes(label=names))
+#0volPlo <- volPlo + geom_text(data=filter(drawRes, bh<0.05), aes(label=names))
 
 volPlo <- volPlo + scale_x_continuous(limits = c(-2, 2))
 
