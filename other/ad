@@ -1,0 +1,6 @@
+empro@empro-HP-Z400-Workstation:~$ python3 -m ipykernel install --name 'WORK' 
+[Errno 13] Permission denied: '/usr/local/share/jupyter'
+empro@empro-HP-Z400-Workstation:~$ sudo python3 -m ipykernel install --name 'WORK' 
+[sudo] password for empro: 
+Installed kernelspec WORK in /usr/local/share/jupyter/kernels/work
+
